@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {margin:0;}
+        
+        .navbar {
+          position: fixed;
+          width: 100%;
+        }
+        </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,12 +32,20 @@
             <li class="nav-item">
               <a class="nav-link" href="#dockerfile">DockerFile</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#FAQ">FAQ</a>
+              </li>
           </ul>
         </div>
       </nav>
+    <br>
+    <br>
+    <br>
     <div class="container" id="alku">
-        
-    <h2>Mikä on docker</h2>
+        <div class="image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1200px-Docker_%28container_engine%29_logo.svg.png" alt="docker">
+        </div>
+    <h2>Mikä on docker?</h2>
     <p>
         Sovelluksia kehitetään ja testataan usein yhdellä koneella. Tämä johtaa ongelmaan, joka tunnetaan yleisemmin nimellä "toimii koneellani",
         jossa Kehittäjä ei tiedä miksi tai miten sovellus ei toimi toisella koneella. Lisäksi järjestelmän eri osat voivat muuttua ajan myötä,
@@ -52,6 +68,9 @@
         Docker-säiliö on ohjelmistopaketti, jossa on kaikki sovelluksen suorittamiseen tarvittavat riippuvuudet.
         Docker yhdistää sovelluksen ja sen riippuvuudet kuvaksi, jota voidaan sitten käyttää millä tahansa koneella, jos se pystyy ajamaan Dockeria.
     </p>
+    <div class="image">
+        <img src="https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/media/docker-containers-images-registries/taxonomy-of-docker-terms-and-concepts.png" alt="docker_kirjahylly">
+    </div>
     </div>
     <div class="container" id="compose">
         
@@ -63,6 +82,9 @@
             docker-compose on suunniteltu yksinkertaistamaan monisäilösovellusten suorittamista yhden komennon käyttämiseen.
             Composen avulla voimme luoda YAML-tiedoston palveluiden määrittelemiseksi ja yhdellä komennolla kääntää tai purkaa kaiken.
         </p>
+        <div class="image">
+        <img src="https://www.jeffgeerling.com/sites/default/files/images/docker-compose-reverse-nfs-share.png" alt="docker_compose">
+        </div>
     </div>
     <div class="container" id="dockerfile">
         
@@ -70,11 +92,63 @@
         <p>
             Dockerfile on yksinkertainen tekstitiedosto, jossa on joukko komentoja tai ohjeita. Nämä komennot/ohjeet suoritetaan peräkkäin
             toimintojen suorittamiseksi peruskuvalle uuden telakointikuvan luomiseksi.  kommentit ja komennot + argumentit ovat kahdenlaisia
-            ​​päärivilohkoja Dockerfile-syntaksissa Peruskomennot FROM – Määrittää käytettävän peruskuvan ja käynnistää rakennusprosessin.
-            RUN – Se suorittaa komennon ja sen argumentit kuvasta.  CMD – Samanlainen toiminto kuin RUN-komento, mutta se suoritetaan vasta,
-            kun säilö on instantoitu.  ENTRYPOINT – Se kohdistaa oletussovellukseesi kuvassa, kun säilö luodaan.
-            ADD – Se kopioi tiedostot lähteestä kohteeseen (säilön sisällä).  ENV – Asettaa ympäristömuuttujat.
+            ​​päärivilohkoja Dockerfile-syntaksissa
+            <p>Peruskomennot:</p>
+            <ul> 
+                <li>FROM – Määrittää käytettävän peruskuvan ja käynnistää rakennusprosessin.</li>    
+                <li>RUN – Se suorittaa komennon ja sen argumentit kuvasta.</li> 
+                <li>ENTRYPOINT – Se kohdistaa oletussovellukseesi kuvassa, kun säilö luodaan.</li> 
+                <li>CMD – Samanlainen toiminto kuin RUN-komento, mutta se suoritetaan vasta, kun säilö on instantoitu. </li> 
+                <li>ADD – Se kopioi tiedostot lähteestä kohteeseen (säilön sisällä). </li> 
+                <li>ENV – Asettaa ympäristömuuttujat.</li> 
+            </ul>
         </p>
+        <div class="image">
+            <img src="https://miro.medium.com/max/1400/1*p8k1b2DZTQEW_yf0hYniXw.png" alt="dockerFile">
+        </div>
+    </div>
+    <div class="container" id="FAQ">
+        <h2>FAQ</h2>
+        <h5>Milloin minun pitäisi käyttää Dockerfileä?</h5>
+        <p>Docker-tiedostoa tulisi käyttää, kun sovelluksen käyttöjärjestelmä on tarpeen jakaa / tehdä yhteistyötä tiimin kanssa.
+           Käytä Dockerfilea versionhallintajärjestelmänä koko sovelluksen käyttöjärjestelmälle. Tai käytä Dockerfileä koodin suorittamiseen
+           kannettavalle tietokoneelle samassa ympäristössä kuin palvelin, jolla työskentelet.</p>
+        <h5>Onko Dockerfile tekstitiedosto?</h5>
+        <p>Dockerfile on tekstidokumentti, joka sisältää kaikki komennot, joita käyttäjä tarvitsee kutsuakseen komentoriviä kuvan kokoamiseksi.
+            Docker-tiedoston avulla käyttäjät voivat luoda automaattisen koontiversion, joka suorittaa useita komentorivikäskyjä peräkkäin.</p>
+        <h5>Kuinka luon yksinkertaisen Docker-tiedoston?</h5>
+        <p>Luo Docker-tiedosto määrittämällä Docker ja Docker Hub. Luo alkuperäinen Docker-säilö ja luo sitten tiedosto siihen.
+            Tee muutoksia säilöön ja luo lopuksi uusi kuva.</p>
+        <h5>Mikä on Dockerfile-kieli?</h5>
+        <p>Go-kieltä käytetään Dockerin kirjoittamiseen. Dockerfile on tekstitiedosto, joka sisältää kokoelmat käskyjä ja komentoja,
+            jotka suoritetaan automaattisesti peräkkäin Docker-ympäristössä uuden telakointikuvan luomiseksi.</p>
+        <h5>Mikä on Docker Compose vs. Dockerfile?</h5>
+        <p>Keskeinen ero Dockerin kirjoittamisen ja Dockerin välillä on se, että Dockerin sisältö kuvaa Docker-kuvan luomista ja rakentamista,
+            kun taas Docker Compose on komento, joka suorittaa Docker-säilöjä docker-composed.yaml-tiedostossa kuvattujen asetusten perusteella.</p>
+        <h5>Mikä on .dockerignore-tiedosto?</h5>
+        <p>.dockerignore-tiedoston avulla voit määrittää luettelon tiedostoista tai hakemistoista, jotka Dockerin on jätettävä huomiotta
+            koontiprosessin aikana. Se on samanlainen kuin .gitignore-tiedosto, jota käytetään, kun rakennat Git-tietovarastoja.
+            Voit määrittää luettelon tiedostoista ja hakemistoista .dockerignore-tiedoston sisällä.</p>
+        <h5>Kuinka kommitoida docker kontti?</h5>
+        <p>Ensin sinun on vedettävä telakointikuva. Ota sitten säilö käyttöön, muokkaa sitä ja tee muutokset kuvaan. Kun sitoudut muutoksiin,
+            luot olennaisesti uuden kuvan, jossa on lisätaso, joka muokkaa peruskuvakerrosta.</p>
+        <h5>Mikä on docker-konteksti?</h5>
+        <p>Docker-kontekstin avulla kontekstin tuonti ja vienti eri koneilla, joissa Docker on asennettu, on helpompaa.
+            Docker-kontekstin vientikomennolla voidaan myös viedä olemassa oleva konteksti tiedostoon, joka voidaan tuoda toiselle koneelle,
+            jossa Docker-asiakasohjelma on asennettu.</p>
+        <h5>Mitä hyötyä Dockerista on DevOpsissa?</h5>
+        <p>Docker-säiliökuva DevOpsissa on kevyt, suoritettava ja erillinen ohjelmistopaketti, joka sisältää kaiken tarvittavan sovelluksen,
+            suoritusajan, järjestelmätyökalujen, asetusten, järjestelmäkirjastojen ja koodin suorittamiseen.
+            Säilöt yksinkertaistavat DevOpsin rakennus-/testaus-/käyttöönottoputkien rakentamista/testausta/käyttöönottoa.</p>
+        <h5>Onko Dockerfile COPY rekursiivinen?</h5>
+        <p>COPY ja ADD ovat kaksi komentoa, jotka Docker tarjoaa tiedostojen kopioimiseen isännästä Docker-kuvaan, kun sitä rakennetaan.
+            COPY-komento kopioi tiedostot rekursiivisesti, jos nimenomaiset lähde- ja kohdehakemistot tai tiedostot on annettu.</p>
+        <h5>Onko Dockerfile Docker-kuva?</h5>
+        <p>Docker-kuva luodaan automaattisesti lukemalla ohjeet Docker-tiedostosta, tekstitiedostosta, joka sisältää kaikki tietyn
+            kuvan rakentamiseen tarvittavat komennot. Docker-tiedosto noudattaa tiettyjä ohjeita ja muotoa ja tuottaa Docker-kuvan, kun luot sen.</p>
+            <div class="image">
+                <img src="https://miro.medium.com/max/897/1*UQie4odOJGP1lOG-9tVF_Q.png" alt="dockerNosturi">
+            </div>
     </div>
 </body>
 </html>
